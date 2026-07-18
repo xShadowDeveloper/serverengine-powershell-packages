@@ -464,299 +464,299 @@ function Assess-ISO27001Compliance {
     Write-Host "<WRITE-LOG = ""*$avStatus A.5.25 Assessment and decision on information security events $avEvidence High*"">"
     
 
-    # A.5.2 - Information security roles and responsibilities
+# A.5.2 - Information security roles and responsibilities
 $rolesDefined = $securityData.Roles.Count -gt 0
 $rolesStatus = if ($rolesDefined) { "Compliant" } else { "Manual-Review" }
 $rolesEvidence = "$($securityData.Roles.Count) security roles defined"
 $compliance += New-ComplianceObject "A.5.2" "Information security roles and responsibilities" $rolesStatus $rolesEvidence "High"
-Write-Host "<WRITE-LOG = ""*$rolesStatus A.5.2 Information security roles and responsibilities $rolesEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$rolesStatus A.5.2 Information security roles and responsibilities $rolesEvidence High*"">"
 
 # A.5.3 - Segregation of duties
 $soxdUsers = $securityData.Accounts.SegregationOfDuties.Count
 $soxStatus = if ($soxdUsers -ge 2) { "Compliant" } else { "Partially Compliant" }
 $soxEvidence = "$soxdUsers users verified for segregation of duties"
 $compliance += New-ComplianceObject "A.5.3" "Segregation of duties" $soxStatus $soxEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$soxStatus A.5.3 Segregation of duties $soxEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$soxStatus A.5.3 Segregation of duties $soxEvidence Medium*"">"
 
 # A.5.4 - Management responsibilities
 $mgtSecure = $securityData.Management.SecurityAwareness -eq $true
 $mgtStatus = if ($mgtSecure) { "Compliant" } else { "Manual-Review" }
 $mgtEvidence = "Management security responsibilities documented: $mgtSecure"
 $compliance += New-ComplianceObject "A.5.4" "Management responsibilities" $mgtStatus $mgtEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$mgtStatus A.5.4 Management responsibilities $mgtEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$mgtStatus A.5.4 Management responsibilities $mgtEvidence Medium*"">"
 
 # A.5.5 - Contact with authorities
 $authorityContact = $securityData.Policies.AuthorityContact -eq $true
 $authorityStatus = if ($authorityContact) { "Compliant" } else { "Manual-Review" }
 $authorityEvidence = "Authority contact procedures: $authorityContact"
 $compliance += New-ComplianceObject "A.5.5" "Contact with authorities" $authorityStatus $authorityEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$authorityStatus A.5.5 Contact with authorities $authorityEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$authorityStatus A.5.5 Contact with authorities $authorityEvidence Medium*"">"
 
 # A.5.6 - Contact with special interest groups
 $interestGroups = $securityData.Policies.SpecialInterestGroups -eq $true
 $interestStatus = if ($interestGroups) { "Compliant" } else { "Manual-Review" }
 $interestEvidence = "Special interest group membership: $interestGroups"
 $compliance += New-ComplianceObject "A.5.6" "Contact with special interest groups" $interestStatus $interestEvidence "Low"
-Write-Host "<WRITE-LOG = ""*$interestStatus A.5.6 Contact with special interest groups $interestEvidence Low*"">"
+#Write-Host "<WRITE-LOG = ""*$interestStatus A.5.6 Contact with special interest groups $interestEvidence Low*"">"
 
 # A.5.7 - Threat intelligence
 $threatIntel = $securityData.ThreatIntelligence.MonitoringEnabled -eq $true
 $threatStatus = if ($threatIntel) { "Compliant" } else { "Partially Compliant" }
 $threatEvidence = "Threat intelligence monitoring: $threatIntel"
 $compliance += New-ComplianceObject "A.5.7" "Threat intelligence" $threatStatus $threatEvidence "High"
-Write-Host "<WRITE-LOG = ""*$threatStatus A.5.7 Threat intelligence $threatEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$threatStatus A.5.7 Threat intelligence $threatEvidence High*"">"
 
 # A.5.8 - Information security in project management
 $pmSecurity = $securityData.Policies.ProjectSecurityReview -eq $true
 $pmStatus = if ($pmSecurity) { "Compliant" } else { "Manual-Review" }
 $pmEvidence = "Project security review process: $pmSecurity"
 $compliance += New-ComplianceObject "A.5.8" "Information security in project management" $pmStatus $pmEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$pmStatus A.5.8 Information security in project management $pmEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$pmStatus A.5.8 Information security in project management $pmEvidence Medium*"">"
 
 # A.5.9 - Inventory of information and other associated assets
 $assetCount = $securityData.Inventory.Assets.Count
 $assetStatus = if ($assetCount -gt 0) { "Compliant" } else { "Non-Compliant" }
 $assetEvidence = "$assetCount assets inventoried"
 $compliance += New-ComplianceObject "A.5.9" "Inventory of information and other associated assets" $assetStatus $assetEvidence "High"
-Write-Host "<WRITE-LOG = ""*$assetStatus A.5.9 Inventory of information and other associated assets $assetEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$assetStatus A.5.9 Inventory of information and other associated assets $assetEvidence High*"">"
 
 # A.5.10 - Acceptable use of information and other associated assets
 $acceptableUse = $securityData.Policies.AcceptableUsePolicy -eq $true
 $acceptableStatus = if ($acceptableUse) { "Compliant" } else { "Non-Compliant" }
 $acceptableEvidence = "Acceptable use policy documented: $acceptableUse"
 $compliance += New-ComplianceObject "A.5.10" "Acceptable use of information and other associated assets" $acceptableStatus $acceptableEvidence "High"
-Write-Host "<WRITE-LOG = ""*$acceptableStatus A.5.10 Acceptable use of information and other associated assets $acceptableEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$acceptableStatus A.5.10 Acceptable use of information and other associated assets $acceptableEvidence High*"">"
 
 # A.5.11 - Return of assets
 $returnAssets = $securityData.Policies.ReturnOfAssets -eq $true
 $returnStatus = if ($returnAssets) { "Compliant" } else { "Manual-Review" }
 $returnEvidence = "Asset return procedures: $returnAssets"
 $compliance += New-ComplianceObject "A.5.11" "Return of assets" $returnStatus $returnEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$returnStatus A.5.11 Return of assets $returnEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$returnStatus A.5.11 Return of assets $returnEvidence Medium*"">"
 
 # A.5.12 - Classification of information
 $classification = $securityData.Classification.Levels.Count -gt 0
 $classStatus = if ($classification) { "Compliant" } else { "Non-Compliant" }
 $classEvidence = "$($securityData.Classification.Levels.Count) classification levels defined"
 $compliance += New-ComplianceObject "A.5.12" "Classification of information" $classStatus $classEvidence "High"
-Write-Host "<WRITE-LOG = ""*$classStatus A.5.12 Classification of information $classEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$classStatus A.5.12 Classification of information $classEvidence High*"">"
 
 # A.5.13 - Labelling of information
 $labelling = $securityData.Classification.LabellingEnabled -eq $true
 $labelStatus = if ($labelling) { "Compliant" } else { "Partially Compliant" }
 $labelEvidence = "Information labelling implemented: $labelling"
 $compliance += New-ComplianceObject "A.5.13" "Labelling of information" $labelStatus $labelEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$labelStatus A.5.13 Labelling of information $labelEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$labelStatus A.5.13 Labelling of information $labelEvidence Medium*"">"
 
 # A.5.14 - Information transfer
 $transferControls = $securityData.DataTransfer.ControlsEnabled -eq $true
 $transferStatus = if ($transferControls) { "Compliant" } else { "Non-Compliant" }
 $transferEvidence = "Secure transfer controls: $transferControls"
 $compliance += New-ComplianceObject "A.5.14" "Information transfer" $transferStatus $transferEvidence "High"
-Write-Host "<WRITE-LOG = ""*$transferStatus A.5.14 Information transfer $transferEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$transferStatus A.5.14 Information transfer $transferEvidence High*"">"
 
 # A.5.15 - Access control
 $accessControl = $securityData.Access.ControlsImplemented -eq $true
 $accessCtrlStatus = if ($accessControl) { "Compliant" } else { "Non-Compliant" }
 $accessCtrlEvidence = "Access controls implemented: $accessControl"
 $compliance += New-ComplianceObject "A.5.15" "Access control" $accessCtrlStatus $accessCtrlEvidence "High"
-Write-Host "<WRITE-LOG = ""*$accessCtrlStatus A.5.15 Access control $accessCtrlEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$accessCtrlStatus A.5.15 Access control $accessCtrlEvidence High*"">"
 
 # A.5.16 - Identity management
 $identityMgmt = $securityData.Identity.ManagedCount -gt 0
 $idStatus = if ($identityMgmt) { "Compliant" } else { "Non-Compliant" }
 $idEvidence = "$($securityData.Identity.ManagedCount) identities managed"
 $compliance += New-ComplianceObject "A.5.16" "Identity management" $idStatus $idEvidence "High"
-Write-Host "<WRITE-LOG = ""*$idStatus A.5.16 Identity management $idEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$idStatus A.5.16 Identity management $idEvidence High*"">"
 
 # A.5.17 - Authentication information
 $authStrength = $securityData.Authentication.PasswordLength -ge 12
 $authStatus = if ($authStrength) { "Compliant" } else { "Non-Compliant" }
 $authEvidence = "Password minimum length: $($securityData.Authentication.PasswordLength) characters"
 $compliance += New-ComplianceObject "A.5.17" "Authentication information" $authStatus $authEvidence "High"
-Write-Host "<WRITE-LOG = ""*$authStatus A.5.17 Authentication information $authEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$authStatus A.5.17 Authentication information $authEvidence High*"">"
 
 # A.5.18 - Access rights
 $adminCount = $securityData.Accounts.LocalAdmins.Count
 $accessStatus = if ($adminCount -le 3) { "Compliant" } else { "Partially Compliant" }
 $accessEvidence = "$adminCount administrator accounts configured"
 $compliance += New-ComplianceObject "A.5.18" "Access rights" $accessStatus $accessEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$accessStatus A.5.18 Access rights $accessEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$accessStatus A.5.18 Access rights $accessEvidence Medium*"">"
 
 # A.5.19 - Information security in supplier relationships
 $supplierSec = $securityData.Suppliers.SecurityAssessed -eq $true
 $supplierStatus = if ($supplierSec) { "Compliant" } else { "Manual-Review" }
 $supplierEvidence = "Supplier security assessments: $supplierSec"
 $compliance += New-ComplianceObject "A.5.19" "Information security in supplier relationships" $supplierStatus $supplierEvidence "High"
-Write-Host "<WRITE-LOG = ""*$supplierStatus A.5.19 Information security in supplier relationships $supplierEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$supplierStatus A.5.19 Information security in supplier relationships $supplierEvidence High*"">"
 
 # A.5.20 - Addressing information security within supplier agreements
 $supplierAgreement = $securityData.Suppliers.AgreementsCount -gt 0
 $agreementStatus = if ($supplierAgreement) { "Compliant" } else { "Non-Compliant" }
 $agreementEvidence = "$($securityData.Suppliers.AgreementsCount) supplier agreements with security terms"
 $compliance += New-ComplianceObject "A.5.20" "Addressing information security within supplier agreements" $agreementStatus $agreementEvidence "High"
-Write-Host "<WRITE-LOG = ""*$agreementStatus A.5.20 Addressing information security within supplier agreements $agreementEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$agreementStatus A.5.20 Addressing information security within supplier agreements $agreementEvidence High*"">"
 
 # A.5.21 - Managing information security in the ICT supply chain
 $supplyChain = $securityData.Supplies.ICTSecurityManaged -eq $true
 $chainStatus = if ($supplyChain) { "Compliant" } else { "Manual-Review" }
 $chainEvidence = "ICT supply chain security managed: $supplyChain"
 $compliance += New-ComplianceObject "A.5.21" "Managing information security in the ICT supply chain" $chainStatus $chainEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$chainStatus A.5.21 Managing information security in the ICT supply chain $chainEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$chainStatus A.5.21 Managing information security in the ICT supply chain $chainEvidence Medium*"">"
 
 # A.5.22 - Monitoring, review and change management of supplier services
 $supplierMonitor = $securityData.Suppliers.MonitoringEnabled -eq $true
 $monitorStatus = if ($supplierMonitor) { "Compliant" } else { "Manual-Review" }
 $monitorEvidence = "Supplier service monitoring: $supplierMonitor"
 $compliance += New-ComplianceObject "A.5.22" "Monitoring, review and change management of supplier services" $monitorStatus $monitorEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$monitorStatus A.5.22 Monitoring, review and change management of supplier services $monitorEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$monitorStatus A.5.22 Monitoring, review and change management of supplier services $monitorEvidence Medium*"">"
 
 # A.5.23 - Information security for use of cloud services
 $cloudSec = $securityData.Cloud.SecurityControls -eq $true
 $cloudStatus = if ($cloudSec) { "Compliant" } else { "Partially Compliant" }
 $cloudEvidence = "Cloud security controls: $cloudSec"
 $compliance += New-ComplianceObject "A.5.23" "Information security for use of cloud services" $cloudStatus $cloudEvidence "High"
-Write-Host "<WRITE-LOG = ""*$cloudStatus A.5.23 Information security for use of cloud services $cloudEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$cloudStatus A.5.23 Information security for use of cloud services $cloudEvidence High*"">"
 
 # A.5.24 - Information security incident response planning
 $incidentPlan = $securityData.Incident.ResponsePlanExists -eq $true
 $incidentPlanStatus = if ($incidentPlan) { "Compliant" } else { "Non-Compliant" }
 $incidentPlanEvidence = "Incident response plan documented: $incidentPlan"
 $compliance += New-ComplianceObject "A.5.24" "Information security incident response planning" $incidentPlanStatus $incidentPlanEvidence "High"
-Write-Host "<WRITE-LOG = ""*$incidentPlanStatus A.5.24 Information security incident response planning $incidentPlanEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$incidentPlanStatus A.5.24 Information security incident response planning $incidentPlanEvidence High*"">"
 
 # A.5.25 - Assessment and decision on information security events
 $eventAssessment = $securityData.Incident.EventAssessmentProcess -eq $true
 $eventStatus = if ($eventAssessment) { "Compliant" } else { "Partially Compliant" }
 $eventEvidence = "Event assessment process: $eventAssessment"
 $compliance += New-ComplianceObject "A.5.25" "Assessment and decision on information security events" $eventStatus $eventEvidence "High"
-Write-Host "<WRITE-LOG = ""*$eventStatus A.5.25 Assessment and decision on information security events $eventEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$eventStatus A.5.25 Assessment and decision on information security events $eventEvidence High*"">"
 
 # A.5.26 - Response to information security incidents
 $incidentResponse = $securityData.Incident.ResponseProcedureExists -eq $true
 $incidentResponseStatus = if ($incidentResponse) { "Compliant" } else { "Non-Compliant" }
 $incidentResponseEvidence = "Incident response procedure: $incidentResponse"
 $compliance += New-ComplianceObject "A.5.26" "Response to information security incidents" $incidentResponseStatus $incidentResponseEvidence "High"
-Write-Host "<WRITE-LOG = ""*$incidentResponseStatus A.5.26 Response to information security incidents $incidentResponseEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$incidentResponseStatus A.5.26 Response to information security incidents $incidentResponseEvidence High*"">"
 
 # A.5.27 - Learning from information security incidents
 $incidentLearning = $securityData.Incident.LessonsLearnedProcess -eq $true
 $learningStatus = if ($incidentLearning) { "Compliant" } else { "Partially Compliant" }
 $learningEvidence = "Lessons learned process: $incidentLearning"
 $compliance += New-ComplianceObject "A.5.27" "Learning from information security incidents" $learningStatus $learningEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$learningStatus A.5.27 Learning from information security incidents $learningEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$learningStatus A.5.27 Learning from information security incidents $learningEvidence Medium*"">"
 
 # A.5.28 - Collection of evidence
 $evidenceCollection = $securityData.Incident.EvidenceCollectionProcedures -eq $true
 $evidenceStatus = if ($evidenceCollection) { "Compliant" } else { "Partially Compliant" }
 $evidenceEvidence = "Evidence collection procedures: $evidenceCollection"
 $compliance += New-ComplianceObject "A.5.28" "Collection of evidence" $evidenceStatus $evidenceEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$evidenceStatus A.5.28 Collection of evidence $evidenceEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$evidenceStatus A.5.28 Collection of evidence $evidenceEvidence Medium*"">"
 
 # A.5.29 - Information security during disruption
 $disruptionSec = $securityData.BusinessContinuity.DisruptionSecurity -eq $true
 $disruptionStatus = if ($disruptionSec) { "Compliant" } else { "Partially Compliant" }
 $disruptionEvidence = "Security during disruption: $disruptionSec"
 $compliance += New-ComplianceObject "A.5.29" "Information security during disruption" $disruptionStatus $disruptionEvidence "High"
-Write-Host "<WRITE-LOG = ""*$disruptionStatus A.5.29 Information security during disruption $disruptionEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$disruptionStatus A.5.29 Information security during disruption $disruptionEvidence High*"">"
 
 # A.5.30 - ICT readiness for business continuity
 $ictReadiness = $securityData.BusinessContinuity.ICTReadiness -eq $true
 $ictStatus = if ($ictReadiness) { "Compliant" } else { "Non-Compliant" }
 $ictEvidence = "ICT readiness for BC: $ictReadiness"
 $compliance += New-ComplianceObject "A.5.30" "ICT readiness for business continuity" $ictStatus $ictEvidence "High"
-Write-Host "<WRITE-LOG = ""*$ictStatus A.5.30 ICT readiness for business continuity $ictEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$ictStatus A.5.30 ICT readiness for business continuity $ictEvidence High*"">"
 
 # A.5.31 - Legal, statutory, regulatory and contractual requirements
 $legalReqs = $securityData.Compliance.LegalRequirements -eq $true
 $legalStatus = if ($legalReqs) { "Compliant" } else { "Manual-Review" }
 $legalEvidence = "Legal requirements documented: $legalReqs"
 $compliance += New-ComplianceObject "A.5.31" "Legal, statutory, regulatory and contractual requirements" $legalStatus $legalEvidence "High"
-Write-Host "<WRITE-LOG = ""*$legalStatus A.5.31 Legal, statutory, regulatory and contractual requirements $legalEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$legalStatus A.5.31 Legal, statutory, regulatory and contractual requirements $legalEvidence High*"">"
 
 # A.5.32 - Intellectual property rights
 $ipProtection = $securityData.Compliance.IPProtection -eq $true
 $ipStatus = if ($ipProtection) { "Compliant" } else { "Manual-Review" }
 $ipEvidence = "IP rights protected: $ipProtection"
 $compliance += New-ComplianceObject "A.5.32" "Intellectual property rights" $ipStatus $ipEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$ipStatus A.5.32 Intellectual property rights $ipEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$ipStatus A.5.32 Intellectual property rights $ipEvidence Medium*"">"
 
 # A.5.33 - Protection of records
 $recordsProtection = $securityData.Records.ProtectionEnabled -eq $true
 $recordsStatus = if ($recordsProtection) { "Compliant" } else { "Partially Compliant" }
 $recordsEvidence = "Records protection: $recordsProtection"
 $compliance += New-ComplianceObject "A.5.33" "Protection of records" $recordsStatus $recordsEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$recordsStatus A.5.33 Protection of records $recordsEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$recordsStatus A.5.33 Protection of records $recordsEvidence Medium*"">"
 
 # A.5.34 - Privacy and protection of PII
 $piiProtection = $securityData.Privacy.PIIProtection -eq $true
 $piiStatus = if ($piiProtection) { "Compliant" } else { "Partially Compliant" }
 $piiEvidence = "PII protection measures: $piiProtection"
 $compliance += New-ComplianceObject "A.5.34" "Privacy and protection of PII" $piiStatus $piiEvidence "High"
-Write-Host "<WRITE-LOG = ""*$piiStatus A.5.34 Privacy and protection of PII $piiEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$piiStatus A.5.34 Privacy and protection of PII $piiEvidence High*"">"
 
 # A.5.35 - Independent review of information security
 $independentReview = $securityData.Security.IndependentReview -eq $true
 $reviewStatus = if ($independentReview) { "Compliant" } else { "Manual-Review" }
 $reviewEvidence = "Independent security reviews: $independentReview"
 $compliance += New-ComplianceObject "A.5.35" "Independent review of information security" $reviewStatus $reviewEvidence "High"
-Write-Host "<WRITE-LOG = ""*$reviewStatus A.5.35 Independent review of information security $reviewEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$reviewStatus A.5.35 Independent review of information security $reviewEvidence High*"">"
 
 # A.5.36 - Compliance with policies, rules and standards
 $policyCompliance = $securityData.Compliance.PoliciesEnforced -eq $true
 $policyCompStatus = if ($policyCompliance) { "Compliant" } else { "Non-Compliant" }
 $policyCompEvidence = "Policies enforced: $policyCompliance"
 $compliance += New-ComplianceObject "A.5.36" "Compliance with policies, rules and standards" $policyCompStatus $policyCompEvidence "High"
-Write-Host "<WRITE-LOG = ""*$policyCompStatus A.5.36 Compliance with policies, rules and standards $policyCompEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$policyCompStatus A.5.36 Compliance with policies, rules and standards $policyCompEvidence High*"">"
 
 # A.5.37 - Documented operating procedures
 $docProcedures = $securityData.Operations.DocumentedProcedures -eq $true
 $docStatus = if ($docProcedures) { "Compliant" } else { "Non-Compliant" }
 $docEvidence = "Operating procedures documented: $docProcedures"
 $compliance += New-ComplianceObject "A.5.37" "Documented operating procedures" $docStatus $docEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$docStatus A.5.37 Documented operating procedures $docEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$docStatus A.5.37 Documented operating procedures $docEvidence Medium*"">"
 
 # A.6.1 - Screening
 $screening = $securityData.HR.ScreeningProcess -eq $true
 $screeningStatus = if ($screening) { "Compliant" } else { "Manual-Review" }
 $screeningEvidence = "Background screening process: $screening"
 $compliance += New-ComplianceObject "A.6.1" "Screening" $screeningStatus $screeningEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$screeningStatus A.6.1 Screening $screeningEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$screeningStatus A.6.1 Screening $screeningEvidence Medium*"">"
 
 # A.6.2 - Terms and conditions of employment
 $empTerms = $securityData.HR.EmploymentTerms -eq $true
 $empStatus = if ($empTerms) { "Compliant" } else { "Manual-Review" }
 $empEvidence = "Security terms in employment contracts: $empTerms"
 $compliance += New-ComplianceObject "A.6.2" "Terms and conditions of employment" $empStatus $empEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$empStatus A.6.2 Terms and conditions of employment $empEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$empStatus A.6.2 Terms and conditions of employment $empEvidence Medium*"">"
 
 # A.6.3 - Information security awareness, education and training
 $awareness = $securityData.Training.AwarenessProgram -eq $true
 $awarenessStatus = if ($awareness) { "Compliant" } else { "Non-Compliant" }
 $awarenessEvidence = "Security awareness program: $awareness"
 $compliance += New-ComplianceObject "A.6.3" "Information security awareness, education and training" $awarenessStatus $awarenessEvidence "High"
-Write-Host "<WRITE-LOG = ""*$awarenessStatus A.6.3 Information security awareness, education and training $awarenessEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$awarenessStatus A.6.3 Information security awareness, education and training $awarenessEvidence High*"">"
 
 # A.6.4 - Disciplinary process
 $disciplinary = $securityData.HR.DisciplinaryProcess -eq $true
 $discStatus = if ($disciplinary) { "Compliant" } else { "Manual-Review" }
 $discEvidence = "Disciplinary process for security violations: $disciplinary"
 $compliance += New-ComplianceObject "A.6.4" "Disciplinary process" $discStatus $discEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$discStatus A.6.4 Disciplinary process $discEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$discStatus A.6.4 Disciplinary process $discEvidence Medium*"">"
 
 # A.6.5 - Responsibilities after termination or change of employment
 $termResponsibilities = $securityData.HR.TerminationProcess -eq $true
 $termStatus = if ($termResponsibilities) { "Compliant" } else { "Non-Compliant" }
 $termEvidence = "Termination responsibilities process: $termResponsibilities"
 $compliance += New-ComplianceObject "A.6.5" "Responsibilities after termination or change of employment" $termStatus $termEvidence "High"
-Write-Host "<WRITE-LOG = ""*$termStatus A.6.5 Responsibilities after termination or change of employment $termEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$termStatus A.6.5 Responsibilities after termination or change of employment $termEvidence High*"">"
 
 # A.6.6 - Confidentiality or non-disclosure agreements
 $nda = $securityData.HR.NDARequired -eq $true
 $ndaStatus = if ($nda) { "Compliant" } else { "Non-Compliant" }
 $ndaEvidence = "NDA/Clauses required: $nda"
 $compliance += New-ComplianceObject "A.6.6" "Confidentiality or non-disclosure agreements" $ndaStatus $ndaEvidence "High"
-Write-Host "<WRITE-LOG = ""*$ndaStatus A.6.6 Confidentiality or non-disclosure agreements $ndaEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$ndaStatus A.6.6 Confidentiality or non-disclosure agreements $ndaEvidence High*"">"
 
 # A.6.7 - Remote working
 $remoteWork = $securityData.Remote.AccessEnabled -eq $true
@@ -764,349 +764,349 @@ $remoteSecured = $securityData.Remote.SecureAccess -eq $true
 $remoteStatus = if ($remoteWork -and $remoteSecured) { "Compliant" } elseif ($remoteWork) { "Partially Compliant" } else { "Not Applicable" }
 $remoteEvidence = "Remote work enabled: $remoteWork, Secured: $remoteSecured"
 $compliance += New-ComplianceObject "A.6.7" "Remote working" $remoteStatus $remoteEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$remoteStatus A.6.7 Remote working $remoteEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$remoteStatus A.6.7 Remote working $remoteEvidence Medium*"">"
 
 # A.6.8 - Information security event reporting
 $eventReporting = $securityData.Incident.EventReportingEnabled -eq $true
 $eventReportStatus = if ($eventReporting) { "Compliant" } else { "Non-Compliant" }
 $eventReportEvidence = "Event reporting mechanism: $eventReporting"
 $compliance += New-ComplianceObject "A.6.8" "Information security event reporting" $eventReportStatus $eventReportEvidence "High"
-Write-Host "<WRITE-LOG = ""*$eventReportStatus A.6.8 Information security event reporting $eventReportEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$eventReportStatus A.6.8 Information security event reporting $eventReportEvidence High*"">"
 
 # A.7.1 - Physical security perimeters
 $physicalPerimeters = $securityData.Physical.PerimetersDefined -eq $true
 $perimeterStatus = if ($physicalPerimeters) { "Compliant" } else { "Manual-Review" }
 $perimeterEvidence = "Physical perimeters defined: $physicalPerimeters"
 $compliance += New-ComplianceObject "A.7.1" "Physical security perimeters" $perimeterStatus $perimeterEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$perimeterStatus A.7.1 Physical security perimeters $perimeterEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$perimeterStatus A.7.1 Physical security perimeters $perimeterEvidence Medium*"">"
 
 # A.7.2 - Physical entry
 $physicalEntry = $securityData.Physical.EntryControls -eq $true
 $entryStatus = if ($physicalEntry) { "Compliant" } else { "Manual-Review" }
 $entryEvidence = "Physical entry controls: $physicalEntry"
 $compliance += New-ComplianceObject "A.7.2" "Physical entry" $entryStatus $entryEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$entryStatus A.7.2 Physical entry $entryEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$entryStatus A.7.2 Physical entry $entryEvidence Medium*"">"
 
 # A.7.3 - Securing offices, rooms and facilities
 $facilitiesSec = $securityData.Physical.FacilitiesSecured -eq $true
 $facilityStatus = if ($facilitiesSec) { "Compliant" } else { "Manual-Review" }
 $facilityEvidence = "Facilities secured: $facilitiesSec"
 $compliance += New-ComplianceObject "A.7.3" "Securing offices, rooms and facilities" $facilityStatus $facilityEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$facilityStatus A.7.3 Securing offices, rooms and facilities $facilityEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$facilityStatus A.7.3 Securing offices, rooms and facilities $facilityEvidence Medium*"">"
 
 # A.7.4 - Physical security monitoring
 $physicalMonitor = $securityData.Physical.MonitoringEnabled -eq $true
 $monitorPhysicalStatus = if ($physicalMonitor) { "Compliant" } else { "Manual-Review" }
 $monitorPhysicalEvidence = "Physical monitoring (CCTV/alarms): $physicalMonitor"
 $compliance += New-ComplianceObject "A.7.4" "Physical security monitoring" $monitorPhysicalStatus $monitorPhysicalEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$monitorPhysicalStatus A.7.4 Physical security monitoring $monitorPhysicalEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$monitorPhysicalStatus A.7.4 Physical security monitoring $monitorPhysicalEvidence Medium*"">"
 
 # A.7.5 - Protecting against physical and environmental threats
 $envProtection = $securityData.Physical.EnvironmentalProtection -eq $true
 $envStatus = if ($envProtection) { "Compliant" } else { "Manual-Review" }
 $envEvidence = "Environmental threat protection: $envProtection"
 $compliance += New-ComplianceObject "A.7.5" "Protecting against physical and environmental threats" $envStatus $envEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$envStatus A.7.5 Protecting against physical and environmental threats $envEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$envStatus A.7.5 Protecting against physical and environmental threats $envEvidence Medium*"">"
 
 # A.7.6 - Working in secure areas
 $secureAreas = $securityData.Physical.SecureAreas -eq $true
 $secureAreaStatus = if ($secureAreas) { "Compliant" } else { "Manual-Review" }
 $secureAreaEvidence = "Secure areas defined: $secureAreas"
 $compliance += New-ComplianceObject "A.7.6" "Working in secure areas" $secureAreaStatus $secureAreaEvidence "Low"
-Write-Host "<WRITE-LOG = ""*$secureAreaStatus A.7.6 Working in secure areas $secureAreaEvidence Low*"">"
+#Write-Host "<WRITE-LOG = ""*$secureAreaStatus A.7.6 Working in secure areas $secureAreaEvidence Low*"">"
 
 # A.7.7 - Clear desk and clear screen
 $clearDesk = $securityData.Physical.ClearDeskPolicy -eq $true
 $clearDeskStatus = if ($clearDesk) { "Compliant" } else { "Partially Compliant" }
 $clearDeskEvidence = "Clear desk/screen policy: $clearDesk"
 $compliance += New-ComplianceObject "A.7.7" "Clear desk and clear screen" $clearDeskStatus $clearDeskEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$clearDeskStatus A.7.7 Clear desk and clear screen $clearDeskEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$clearDeskStatus A.7.7 Clear desk and clear screen $clearDeskEvidence Medium*"">"
 
 # A.7.8 - Equipment siting and protection
 $equipmentProtection = $securityData.Physical.EquipmentProtected -eq $true
 $equipStatus = if ($equipmentProtection) { "Compliant" } else { "Manual-Review" }
 $equipEvidence = "Equipment protection: $equipmentProtection"
 $compliance += New-ComplianceObject "A.7.8" "Equipment siting and protection" $equipStatus $equipEvidence "Low"
-Write-Host "<WRITE-LOG = ""*$equipStatus A.7.8 Equipment siting and protection $equipEvidence Low*"">"
+#Write-Host "<WRITE-LOG = ""*$equipStatus A.7.8 Equipment siting and protection $equipEvidence Low*"">"
 
 # A.7.9 - Security of assets off-premises
 $offPremises = $securityData.Physical.OffPremisesSecurity -eq $true
 $offPremStatus = if ($offPremises) { "Compliant" } else { "Partially Compliant" }
 $offPremEvidence = "Off-premises asset security: $offPremises"
 $compliance += New-ComplianceObject "A.7.9" "Security of assets off-premises" $offPremStatus $offPremEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$offPremStatus A.7.9 Security of assets off-premises $offPremEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$offPremStatus A.7.9 Security of assets off-premises $offPremEvidence Medium*"">"
 
 # A.7.10 - Storage media
 $storageMedia = $securityData.Physical.MediaHandling -eq $true
 $mediaStatus = if ($storageMedia) { "Compliant" } else { "Partially Compliant" }
 $mediaEvidence = "Storage media handling procedures: $storageMedia"
 $compliance += New-ComplianceObject "A.7.10" "Storage media" $mediaStatus $mediaEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$mediaStatus A.7.10 Storage media $mediaEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$mediaStatus A.7.10 Storage media $mediaEvidence Medium*"">"
 
 # A.7.11 - Supporting utilities
 $utilities = $securityData.Physical.UtilitiesProtected -eq $true
 $utilStatus = if ($utilities) { "Compliant" } else { "Manual-Review" }
 $utilEvidence = "Supporting utilities protected: $utilities"
 $compliance += New-ComplianceObject "A.7.11" "Supporting utilities" $utilStatus $utilEvidence "Low"
-Write-Host "<WRITE-LOG = ""*$utilStatus A.7.11 Supporting utilities $utilEvidence Low*"">"
+#Write-Host "<WRITE-LOG = ""*$utilStatus A.7.11 Supporting utilities $utilEvidence Low*"">"
 
 # A.7.12 - Cabling security
 $cablingSec = $securityData.Physical.CablingSecured -eq $true
 $cableStatus = if ($cablingSec) { "Compliant" } else { "Manual-Review" }
 $cableEvidence = "Cabling security: $cablingSec"
 $compliance += New-ComplianceObject "A.7.12" "Cabling security" $cableStatus $cableEvidence "Low"
-Write-Host "<WRITE-LOG = ""*$cableStatus A.7.12 Cabling security $cableEvidence Low*"">"
+#Write-Host "<WRITE-LOG = ""*$cableStatus A.7.12 Cabling security $cableEvidence Low*"">"
 
 # A.7.13 - Equipment maintenance
 $maintenance = $securityData.Physical.MaintenanceScheduled -eq $true
 $maintStatus = if ($maintenance) { "Compliant" } else { "Manual-Review" }
 $maintEvidence = "Equipment maintenance scheduled: $maintenance"
 $compliance += New-ComplianceObject "A.7.13" "Equipment maintenance" $maintStatus $maintEvidence "Low"
-Write-Host "<WRITE-LOG = ""*$maintStatus A.7.13 Equipment maintenance $maintEvidence Low*"">"
+#Write-Host "<WRITE-LOG = ""*$maintStatus A.7.13 Equipment maintenance $maintEvidence Low*"">"
 
 # A.7.14 - Secure disposal or re-use of equipment
 $secureDisposal = $securityData.Physical.SecureDisposal -eq $true
 $disposalStatus = if ($secureDisposal) { "Compliant" } else { "Non-Compliant" }
 $disposalEvidence = "Secure disposal procedures: $secureDisposal"
 $compliance += New-ComplianceObject "A.7.14" "Secure disposal or re-use of equipment" $disposalStatus $disposalEvidence "High"
-Write-Host "<WRITE-LOG = ""*$disposalStatus A.7.14 Secure disposal or re-use of equipment $disposalEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$disposalStatus A.7.14 Secure disposal or re-use of equipment $disposalEvidence High*"">"
 
 # A.8.1 - User endpoint devices
 $endpointSec = $securityData.Endpoints.SecurityEnabled -eq $true
 $endpointStatus = if ($endpointSec) { "Compliant" } else { "Non-Compliant" }
 $endpointEvidence = "Endpoint security enabled: $endpointSec"
 $compliance += New-ComplianceObject "A.8.1" "User endpoint devices" $endpointStatus $endpointEvidence "High"
-Write-Host "<WRITE-LOG = ""*$endpointStatus A.8.1 User endpoint devices $endpointEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$endpointStatus A.8.1 User endpoint devices $endpointEvidence High*"">"
 
 # A.8.2 - Privileged access rights
 $privAccounts = $securityData.Accounts.PrivilegedCount
 $privStatus = if ($privAccounts -le 5) { "Compliant" } else { "Non-Compliant" }
 $privEvidence = "$privAccounts privileged accounts"
 $compliance += New-ComplianceObject "A.8.2" "Privileged access rights" $privStatus $privEvidence "High"
-Write-Host "<WRITE-LOG = ""*$privStatus A.8.2 Privileged access rights $privEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$privStatus A.8.2 Privileged access rights $privEvidence High*"">"
 
 # A.8.3 - Information access restriction
 $accessRestriction = $securityData.Access.RestrictionImplemented -eq $true
 $restrictStatus = if ($accessRestriction) { "Compliant" } else { "Non-Compliant" }
 $restrictEvidence = "Access restrictions implemented: $accessRestriction"
 $compliance += New-ComplianceObject "A.8.3" "Information access restriction" $restrictStatus $restrictEvidence "High"
-Write-Host "<WRITE-LOG = ""*$restrictStatus A.8.3 Information access restriction $restrictEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$restrictStatus A.8.3 Information access restriction $restrictEvidence High*"">"
 
 # A.8.4 - Access to source code
 $sourceCodeAccess = $securityData.Development.SourceCodeControlled -eq $true
 $sourceStatus = if ($sourceCodeAccess) { "Compliant" } else { "Manual-Review" }
 $sourceEvidence = "Source code access controlled: $sourceCodeAccess"
 $compliance += New-ComplianceObject "A.8.4" "Access to source code" $sourceStatus $sourceEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$sourceStatus A.8.4 Access to source code $sourceEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$sourceStatus A.8.4 Access to source code $sourceEvidence Medium*"">"
 
 # A.8.5 - Secure authentication
 $mfaEnabled = $securityData.Authentication.MFAEnabled -eq $true
 $authStatus = if ($mfaEnabled) { "Compliant" } else { "Partially Compliant" }
 $authEvidence = "Multi-factor authentication: $mfaEnabled"
 $compliance += New-ComplianceObject "A.8.5" "Secure authentication" $authStatus $authEvidence "High"
-Write-Host "<WRITE-LOG = ""*$authStatus A.8.5 Secure authentication $authEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$authStatus A.8.5 Secure authentication $authEvidence High*"">"
 
 # A.8.6 - Capacity management
 $capacityMonitored = $securityData.Infrastructure.CapacityMonitored -eq $true
 $capacityStatus = if ($capacityMonitored) { "Compliant" } else { "Partially Compliant" }
 $capacityEvidence = "Capacity monitoring: $capacityMonitored"
 $compliance += New-ComplianceObject "A.8.6" "Capacity management" $capacityStatus $capacityEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$capacityStatus A.8.6 Capacity management $capacityEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$capacityStatus A.8.6 Capacity management $capacityEvidence Medium*"">"
 
 # A.8.7 - Protection against malware
 $malwareStatus = if ($securityData.MalwareProtection.AntivirusEnabled) { "Compliant" } else { "Non-Compliant" }
 $malwareEvidence = if ($securityData.MalwareProtection.AntivirusEnabled) { "Antivirus protection active" } else { "No malware protection" }
 $compliance += New-ComplianceObject "A.8.7" "Protection against malware" $malwareStatus $malwareEvidence "High"
-Write-Host "<WRITE-LOG = ""*$malwareStatus A.8.7 Protection against malware $malwareEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$malwareStatus A.8.7 Protection against malware $malwareEvidence High*"">"
 
 # A.8.8 - Management of technical vulnerabilities
 $updateAge = if ($securityData.Updates.LastUpdate) { ((Get-Date) - $securityData.Updates.LastUpdate.InstalledOn).Days } else { 999 }
 $patchStatus = if ($updateAge -lt 30) { "Compliant" } elseif ($updateAge -lt 90) { "Partially Compliant" } else { "Non-Compliant" }
 $patchEvidence = "Last update: $($securityData.Updates.LastUpdate.InstalledOn) ($updateAge days ago)"
 $compliance += New-ComplianceObject "A.8.8" "Management of technical vulnerabilities" $patchStatus $patchEvidence "High"
-Write-Host "<WRITE-LOG = ""*$patchStatus A.8.8 Management of technical vulnerabilities $patchEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$patchStatus A.8.8 Management of technical vulnerabilities $patchEvidence High*"">"
 
 # A.8.9 - Configuration management
 $firewallEnabled = ($securityData.Network.FirewallProfiles | Where-Object {$_.Enabled -eq "True"}).Count -gt 0
 $configStatus = if ($firewallEnabled) { "Compliant" } else { "Non-Compliant" }
 $configEvidence = "Firewall enabled: $firewallEnabled"
 $compliance += New-ComplianceObject "A.8.9" "Configuration management" $configStatus $configEvidence "High"
-Write-Host "<WRITE-LOG = ""*$configStatus A.8.9 Configuration management $configEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$configStatus A.8.9 Configuration management $configEvidence High*"">"
 
 # A.8.10 - Information deletion
 $dataDeletion = $securityData.DataRetention.DeletionPolicy -eq $true
 $deletionStatus = if ($dataDeletion) { "Compliant" } else { "Partially Compliant" }
 $deletionEvidence = "Data deletion policy: $dataDeletion"
 $compliance += New-ComplianceObject "A.8.10" "Information deletion" $deletionStatus $deletionEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$deletionStatus A.8.10 Information deletion $deletionEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$deletionStatus A.8.10 Information deletion $deletionEvidence Medium*"">"
 
 # A.8.11 - Data masking
 $dataMasking = $securityData.DataProtection.MaskingEnabled -eq $true
 $maskingStatus = if ($dataMasking) { "Compliant" } else { "Partially Compliant" }
 $maskingEvidence = "Data masking implemented: $dataMasking"
 $compliance += New-ComplianceObject "A.8.11" "Data masking" $maskingStatus $maskingEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$maskingStatus A.8.11 Data masking $maskingEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$maskingStatus A.8.11 Data masking $maskingEvidence Medium*"">"
 
 # A.8.12 - Data leakage prevention
 $dlpEnabled = $securityData.DataProtection.DLPEnabled -eq $true
 $dlpStatus = if ($dlpEnabled) { "Compliant" } else { "Non-Compliant" }
 $dlpEvidence = "DLP solutions active: $dlpEnabled"
 $compliance += New-ComplianceObject "A.8.12" "Data leakage prevention" $dlpStatus $dlpEvidence "High"
-Write-Host "<WRITE-LOG = ""*$dlpStatus A.8.12 Data leakage prevention $dlpEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$dlpStatus A.8.12 Data leakage prevention $dlpEvidence High*"">"
 
 # A.8.13 - Information backup
 $backupEnabled = $securityData.Backup.BackupsEnabled -eq $true
 $backupStatus = if ($backupEnabled) { "Compliant" } else { "Non-Compliant" }
 $backupEvidence = "Backup system active: $backupEnabled"
 $compliance += New-ComplianceObject "A.8.13" "Information backup" $backupStatus $backupEvidence "High"
-Write-Host "<WRITE-LOG = ""*$backupStatus A.8.13 Information backup $backupEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$backupStatus A.8.13 Information backup $backupEvidence High*"">"
 
 # A.8.14 - Redundancy of information processing facilities
 $redundancy = $securityData.Infrastructure.RedundancyConfigured -eq $true
 $redundancyStatus = if ($redundancy) { "Compliant" } else { "Partially Compliant" }
 $redundancyEvidence = "Redundancy configured: $redundancy"
 $compliance += New-ComplianceObject "A.8.14" "Redundancy of information processing facilities" $redundancyStatus $redundancyEvidence "High"
-Write-Host "<WRITE-LOG = ""*$redundancyStatus A.8.14 Redundancy of information processing facilities $redundancyEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$redundancyStatus A.8.14 Redundancy of information processing facilities $redundancyEvidence High*"">"
 
 # A.8.15 - Logging
 $auditEnabled = $securityData.Audit.AuditPolicies.Count -gt 0
 $loggingStatus = if ($auditEnabled) { "Compliant" } else { "Partially Compliant" }
 $loggingEvidence = "Audit policies configured: $auditEnabled"
 $compliance += New-ComplianceObject "A.8.15" "Logging" $loggingStatus $loggingEvidence "High"
-Write-Host "<WRITE-LOG = ""*$loggingStatus A.8.15 Logging $loggingEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$loggingStatus A.8.15 Logging $loggingEvidence High*"">"
 
 # A.8.16 - Monitoring activities
 $monitoringEnabled = $securityData.Monitoring.SystemMonitoringEnabled -eq $true
 $monitorStatus = if ($monitoringEnabled) { "Compliant" } else { "Non-Compliant" }
 $monitorEvidence = "System monitoring active: $monitoringEnabled"
 $compliance += New-ComplianceObject "A.8.16" "Monitoring activities" $monitorStatus $monitorEvidence "High"
-Write-Host "<WRITE-LOG = ""*$monitorStatus A.8.16 Monitoring activities $monitorEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$monitorStatus A.8.16 Monitoring activities $monitorEvidence High*"">"
 
 # A.8.17 - Clock synchronization
 $ntpEnabled = $securityData.TimeSync.NTPEnabled -eq $true
 $ntpStatus = if ($ntpEnabled) { "Compliant" } else { "Non-Compliant" }
 $ntpEvidence = "NTP synchronization: $ntpEnabled"
 $compliance += New-ComplianceObject "A.8.17" "Clock synchronization" $ntpStatus $ntpEvidence "High"
-Write-Host "<WRITE-LOG = ""*$ntpStatus A.8.17 Clock synchronization $ntpEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$ntpStatus A.8.17 Clock synchronization $ntpEvidence High*"">"
 
 # A.8.18 - Use of privileged utility programs
 $utilRestrictions = $securityData.Privileged.UtilityRestrictions -eq $true
 $utilStatus = if ($utilRestrictions) { "Compliant" } else { "Partially Compliant" }
 $utilEvidence = "Utility program restrictions: $utilRestrictions"
 $compliance += New-ComplianceObject "A.8.18" "Use of privileged utility programs" $utilStatus $utilEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$utilStatus A.8.18 Use of privileged utility programs $utilEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$utilStatus A.8.18 Use of privileged utility programs $utilEvidence Medium*"">"
 
 # A.8.19 - Installation of software on operational systems
 $softwareControl = $securityData.Software.InstallationControlled -eq $true
 $softwareStatus = if ($softwareControl) { "Compliant" } else { "Non-Compliant" }
 $softwareEvidence = "Software installation controlled: $softwareControl"
 $compliance += New-ComplianceObject "A.8.19" "Installation of software on operational systems" $softwareStatus $softwareEvidence "High"
-Write-Host "<WRITE-LOG = ""*$softwareStatus A.8.19 Installation of software on operational systems $softwareEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$softwareStatus A.8.19 Installation of software on operational systems $softwareEvidence High*"">"
 
 # A.8.20 - Networks security
 $networkSecurity = $securityData.Network.SecurityControlsImplemented -eq $true
 $networkStatus = if ($networkSecurity) { "Compliant" } else { "Non-Compliant" }
 $networkEvidence = "Network security controls implemented: $networkSecurity"
 $compliance += New-ComplianceObject "A.8.20" "Networks security" $networkStatus $networkEvidence "High"
-Write-Host "<WRITE-LOG = ""*$networkStatus A.8.20 Networks security $networkEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$networkStatus A.8.20 Networks security $networkEvidence High*"">"
 
 # A.8.21 - Security of network services
 $networkServices = $securityData.Network.ServicesSecured -eq $true
 $servicesStatus = if ($networkServices) { "Compliant" } else { "Partially Compliant" }
 $servicesEvidence = "Network services secured: $networkServices"
 $compliance += New-ComplianceObject "A.8.21" "Security of network services" $servicesStatus $servicesEvidence "High"
-Write-Host "<WRITE-LOG = ""*$servicesStatus A.8.21 Security of network services $servicesEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$servicesStatus A.8.21 Security of network services $servicesEvidence High*"">"
 
 # A.8.22 - Segregation of networks
 $networkSegregation = $securityData.Network.SegregationImplemented -eq $true
 $segregStatus = if ($networkSegregation) { "Compliant" } else { "Partially Compliant" }
 $segregEvidence = "Network segregation: $networkSegregation"
 $compliance += New-ComplianceObject "A.8.22" "Segregation of networks" $segregStatus $segregEvidence "High"
-Write-Host "<WRITE-LOG = ""*$segregStatus A.8.22 Segregation of networks $segregEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$segregStatus A.8.22 Segregation of networks $segregEvidence High*"">"
 
 # A.8.23 - Web filtering
 $webFiltering = $securityData.Network.WebFilteringEnabled -eq $true
 $webFilterStatus = if ($webFiltering) { "Compliant" } else { "Partially Compliant" }
 $webFilterEvidence = "Web filtering enabled: $webFiltering"
 $compliance += New-ComplianceObject "A.8.23" "Web filtering" $webFilterStatus $webFilterEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$webFilterStatus A.8.23 Web filtering $webFilterEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$webFilterStatus A.8.23 Web filtering $webFilterEvidence Medium*"">"
 
 # A.8.24 - Use of cryptography
 $cryptography = $securityData.Encryption.CryptoPoliciesDefined -eq $true
 $cryptoStatus = if ($cryptography) { "Compliant" } else { "Partially Compliant" }
 $cryptoEvidence = "Cryptography policies defined: $cryptography"
 $compliance += New-ComplianceObject "A.8.24" "Use of cryptography" $cryptoStatus $cryptoEvidence "High"
-Write-Host "<WRITE-LOG = ""*$cryptoStatus A.8.24 Use of cryptography $cryptoEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$cryptoStatus A.8.24 Use of cryptography $cryptoEvidence High*"">"
 
 # A.8.25 - Secure development life cycle
 $secureSDLC = $securityData.Development.SecureSDLC -eq $true
 $sdlcStatus = if ($secureSDLC) { "Compliant" } else { "Manual-Review" }
 $sdlcEvidence = "Secure SDLC implemented: $secureSDLC"
 $compliance += New-ComplianceObject "A.8.25" "Secure development life cycle" $sdlcStatus $sdlcEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$sdlcStatus A.8.25 Secure development life cycle $sdlcEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$sdlcStatus A.8.25 Secure development life cycle $sdlcEvidence Medium*"">"
 
 # A.8.26 - Application security requirements
 $appSecReq = $securityData.Development.AppSecurityRequirements -eq $true
 $appReqStatus = if ($appSecReq) { "Compliant" } else { "Partially Compliant" }
 $appReqEvidence = "Application security requirements defined: $appReq"
 $compliance += New-ComplianceObject "A.8.26" "Application security requirements" $appReqStatus $appReqEvidence "High"
-Write-Host "<WRITE-LOG = ""*$appReqStatus A.8.26 Application security requirements $appReqEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$appReqStatus A.8.26 Application security requirements $appReqEvidence High*"">"
 
 # A.8.27 - Secure system architecture and engineering principles
 $secureArch = $securityData.Development.SecureArchitecture -eq $true
 $archStatus = if ($secureArch) { "Compliant" } else { "Manual-Review" }
 $archEvidence = "Secure architecture principles: $secureArch"
 $compliance += New-ComplianceObject "A.8.27" "Secure system architecture and engineering principles" $archStatus $archEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$archStatus A.8.27 Secure system architecture and engineering principles $archEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$archStatus A.8.27 Secure system architecture and engineering principles $archEvidence Medium*"">"
 
 # A.8.28 - Secure coding
 $secureCoding = $securityData.Development.SecureCodingStandards -eq $true
 $codingStatus = if ($secureCoding) { "Compliant" } else { "Manual-Review" }
 $codingEvidence = "Secure coding standards: $secureCoding"
 $compliance += New-ComplianceObject "A.8.28" "Secure coding" $codingStatus $codingEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$codingStatus A.8.28 Secure coding $codingEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$codingStatus A.8.28 Secure coding $codingEvidence Medium*"">"
 
 # A.8.29 - Security testing in development and acceptance
 $securityTesting = $securityData.Development.SecurityTestingEnabled -eq $true
 $testStatus = if ($securityTesting) { "Compliant" } else { "Partially Compliant" }
 $testEvidence = "Security testing in SDLC: $securityTesting"
 $compliance += New-ComplianceObject "A.8.29" "Security testing in development and acceptance" $testStatus $testEvidence "High"
-Write-Host "<WRITE-LOG = ""*$testStatus A.8.29 Security testing in development and acceptance $testEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$testStatus A.8.29 Security testing in development and acceptance $testEvidence High*"">"
 
 # A.8.30 - Outsourced development
 $outsourcedDev = $securityData.Development.OutsourcedControlled -eq $true
 $outsourcedStatus = if ($outsourcedDev) { "Compliant" } else { "Manual-Review" }
 $outsourcedEvidence = "Outsourced development controlled: $outsourcedDev"
 $compliance += New-ComplianceObject "A.8.30" "Outsourced development" $outsourcedStatus $outsourcedEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$outsourcedStatus A.8.30 Outsourced development $outsourcedEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$outsourcedStatus A.8.30 Outsourced development $outsourcedEvidence Medium*"">"
 
 # A.8.31 - Separation of development, test and production environments
 $envSeparation = $securityData.Development.EnvironmentSeparation -eq $true
 $envStatus = if ($envSeparation) { "Compliant" } else { "Non-Compliant" }
 $envEvidence = "Environment separation: $envSeparation"
 $compliance += New-ComplianceObject "A.8.31" "Separation of development, test and production environments" $envStatus $envEvidence "High"
-Write-Host "<WRITE-LOG = ""*$envStatus A.8.31 Separation of development, test and production environments $envEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$envStatus A.8.31 Separation of development, test and production environments $envEvidence High*"">"
 
 # A.8.32 - Change management
 $changeMgmt = $securityData.Operations.ChangeManagementProcess -eq $true
 $changeStatus = if ($changeMgmt) { "Compliant" } else { "Non-Compliant" }
 $changeEvidence = "Change management process: $changeMgmt"
 $compliance += New-ComplianceObject "A.8.32" "Change management" $changeStatus $changeEvidence "High"
-Write-Host "<WRITE-LOG = ""*$changeStatus A.8.32 Change management $changeEvidence High*"">"
+#Write-Host "<WRITE-LOG = ""*$changeStatus A.8.32 Change management $changeEvidence High*"">"
 
 # A.8.33 - Test information
 $testDataProtection = $securityData.Testing.TestDataProtected -eq $true
 $testDataStatus = if ($testDataProtection) { "Compliant" } else { "Partially Compliant" }
 $testDataEvidence = "Test data protected: $testDataProtection"
 $compliance += New-ComplianceObject "A.8.33" "Test information" $testDataStatus $testDataEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$testDataStatus A.8.33 Test information $testDataEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$testDataStatus A.8.33 Test information $testDataEvidence Medium*"">"
 
 # A.8.34 - Protection of information systems during audit testing
 $auditProtection = $securityData.Audit.SystemsProtectedDuringAudit -eq $true
 $auditProtStatus = if ($auditProtection) { "Compliant" } else { "Partially Compliant" }
 $auditProtEvidence = "Systems protected during audits: $auditProtection"
 $compliance += New-ComplianceObject "A.8.34" "Protection of information systems during audit testing" $auditProtStatus $auditProtEvidence "Medium"
-Write-Host "<WRITE-LOG = ""*$auditProtStatus A.8.34 Protection of information systems during audit testing $auditProtEvidence Medium*"">"
+#Write-Host "<WRITE-LOG = ""*$auditProtStatus A.8.34 Protection of information systems during audit testing $auditProtEvidence Medium*"">"
 
 
     
@@ -1583,9 +1583,14 @@ try {
     # Generate HTML content
     $htmlContent = Get-ISO27001ReportHTML
     
-    # Save HTML to Desktop
+    # Save HTML to Desktop; when run by the ServerEngine service (LocalSystem
+    # has no Desktop) fall back to C:\ProgramData\ServerEngine\Reports
     $hostName = hostname
     $desktopPath = [Environment]::GetFolderPath("Desktop")
+    if ([string]::IsNullOrWhiteSpace($desktopPath) -or -not (Test-Path $desktopPath)) {
+        $desktopPath = "C:\ProgramData\ServerEngine\Reports"
+        New-Item -ItemType Directory -Force -Path $desktopPath | Out-Null
+    }
     $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
     $htmlFilePath = Join-Path $desktopPath "ISO-27001-Report-$hostName.html"
     $htmlContent | Out-File -FilePath $htmlFilePath -Encoding UTF8
