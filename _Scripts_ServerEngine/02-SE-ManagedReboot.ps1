@@ -2,9 +2,8 @@
 # and seemlesy continue the next scripts when using Runbooks. 
 # ServerEngine initiates a waiting sequence and after
 # successfull reconnection the cycle ends
-# IMPORTANT: Requires a script step after reboot
 #-------------------------------------------------
 
-# Use this specific line for successfully reboot cycles
+# Use this specific line for managed reboot cycles
 Invoke-Command { Start-Sleep 3;Write-Host " ""State : Reboot"" ";Restart-Computer -Force }; Exit-PSSession 
 
