@@ -28,7 +28,7 @@ if ((Get-Service WinRM).Status -ne 'Running') {
 winrm quickconfig -transport:https -force 2>$null
  
 # Check for existing certificate
-$hostname = hostname
+$hostname = [System.Net.Dns]::GetHostByName($env:COMPUTERNAME).HostName
 $existingCert = Get-ChildItem "Cert:\LocalMachine\My" | 
     Where-Object { 
         $_.Subject -eq "CN=$hostname" -and
